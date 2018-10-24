@@ -23,8 +23,9 @@
   <div class="main ng-class:{'toggled': toggled}">
     <nav class="navbar" ng-init="toggled = false">
       <span class="toggle" ng-click="toggled = !toggled">
-            <i class="fas fa-bars"></i>
-        </span>
+        <i class="fas fa-bars"></i>
+      </span>
+      <input class="form__input navbar__search" type="text" placeholder="Search Gify" ng-model="searchStr" />
     </nav>
 
     <div class="wrapper">
