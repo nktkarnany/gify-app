@@ -2,6 +2,13 @@
   box-sizing: border-box;
 }
 
+:root {
+  --primary-dark: rgb(162, 79, 79);
+  --primary-darkest: rgb(100, 14, 14);
+  --primary-light: rgba(162, 79, 79, 0.75);
+  --primary-lightest: rgba(162, 79, 79, 0.25);
+}
+
 html,
 body {
   overflow-x: hidden;
@@ -66,9 +73,9 @@ body {
 .form__input:focus {
   color: #495057;
   background-color: #fff;
-  border-color: rgba(101, 162, 79, 0.75);
+  border-color: var(--primary-light);
   outline: 0;
-  box-shadow: 0 0 0 0.1rem rgba(101, 162, 79, 0.25);
+  box-shadow: 0 0 0 0.1rem var(--primary-lightest);
 }
 
 .form__input-email {
@@ -83,7 +90,7 @@ body {
 }
 
 .form__button {
-  background-color: rgba(101, 162, 79, 1);
+  background-color: var(--primary-dark);
   color: #fff;
   display: block;
   width: 100%;
@@ -124,10 +131,10 @@ body {
 .sidebar__wrapper {
   position: relative;
   min-height: 100%;
-  background-color: rgba(101, 162, 79, 1);
+  background-color: var(--primary-dark);
   color: #fff;
   font-weight: 200;
-  box-shadow: inset 0 0 10px rgba(37, 100, 14, 1);
+  box-shadow: inset 0 0 10px var(--primary-darkest);
 }
 
 .sidebar__logo {
@@ -244,7 +251,7 @@ body {
 }
 
 .search__btn:hover {
-  color: #495057;
+  color: #888888;
 }
 
 .search__btn:focus {
@@ -302,11 +309,9 @@ body {
     -webkit-column-count: 2;
     column-count: 2;
   }
-
   .main {
     margin-right: -260px;
   }
-
   .dashboard-container>.toggled {
     margin-right: 0;
   }
@@ -318,11 +323,9 @@ body {
     -webkit-column-count: 1;
     column-count: 1;
   }
-
   .main {
     margin-right: -260px;
   }
-
   .dashboard-container>.toggled {
     margin-right: 0;
   }
@@ -334,8 +337,8 @@ body {
   text-align: center;
 }
 
-.load-more > .load-btn {
-  background-color: rgba(101, 162, 79, 1);
+.load-more>.load-btn {
+  background-color: var(--primary-dark);
   color: #fff;
   cursor: pointer;
   padding: 10px;
