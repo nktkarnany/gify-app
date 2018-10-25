@@ -17,22 +17,7 @@ gifyApp.config(function ($routeProvider) {
 
 });
 
-gifyApp.service('Auth', function () {
-
-  this.login = function (req) {
-    return new Promise((resolve, reject) => {
-      resolve(true);
-    });
-  }
-
-  this.logout = function () {
-    return new Promise((resolve, reject) => {
-      resolve(true);
-    });
-  }
-
-});
-
+// A service to save api calls related to our gify app
 gifyApp.service('gify', ['$http', function ($http) {
 
   this.search = function (req) {
@@ -56,6 +41,8 @@ gifyApp.service('gify', ['$http', function ($http) {
 
 }]);
 
+// A directive to listen hover event for each gif
+// A gif is rendered by default and only on hover a static image is displayed
 gifyApp.directive('gif', function () {
   return {
     restrict: 'A',

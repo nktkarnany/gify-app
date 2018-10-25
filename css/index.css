@@ -1,12 +1,12 @@
-* {
-  box-sizing: border-box;
-}
-
 :root {
   --primary-dark: rgb(162, 79, 79);
   --primary-darkest: rgb(100, 14, 14);
   --primary-light: rgba(162, 79, 79, 0.75);
   --primary-lightest: rgba(162, 79, 79, 0.25);
+}
+
+* {
+  box-sizing: border-box;
 }
 
 html,
@@ -108,7 +108,6 @@ body {
   margin-bottom: 1rem;
   color: #6c757d;
 }
-
 
 /* Login Page Css Ends */
 
@@ -350,6 +349,5 @@ body {
   border: none;
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
 }
-
 
 /* Dashboard Page Css Ends */

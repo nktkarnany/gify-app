@@ -2,10 +2,16 @@ var gifyApp = angular.module('gifyApp');
 
 gifyApp.controller('dashboardCtrl', ['$scope', 'gify', '$timeout', '$location', function ($scope, gify, $timeout, $location) {
 
+  // Declaring and Initializing an empty gifs array
   $scope.gifs = [];
+
+  // Declaring and Initializing an offset to fetch new gifs on load more
   let offset = 0;
+
+  // Declaring and Initializing a variable to save loading state of the loader
   $scope.loading = false;
 
+  // Method to fetch gifs and populate the gifs array
   function fetchGifs() {
 
     let req = {
@@ -35,6 +41,7 @@ gifyApp.controller('dashboardCtrl', ['$scope', 'gify', '$timeout', '$location', 
     );
   }
 
+  // method called when search button is clicked
   $scope.search_gifs = function (s) {
     if (s) {
       s = s.toLowerCase();
@@ -49,17 +56,21 @@ gifyApp.controller('dashboardCtrl', ['$scope', 'gify', '$timeout', '$location', 
     }
   }
 
+  // checking search query in url is available setting it to the search string
   let queryStr = $location.search().q;
   if (queryStr) {
     $scope.search_gif = queryStr;
   }
 
+  // button to fetch more gifs
   $scope.load_more = function() {
     fetchGifs();
   }
 
+  // init call to fetch gifs when page is loaded
   fetchGifs();
 
+  // a hypothetical logout method which redirects back to the login page
   $scope.logout = () => {
     $location.path('/');
   }
