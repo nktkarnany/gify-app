@@ -64,11 +64,11 @@ gifyApp.directive('gif', function () {
     },
     link: function (scope, element, attrs) {
       element.on('mouseenter', function () {
-        attrs.$set('ngSrc', scope.gif.images.fixed_width.url);
+        attrs.$set('ngSrc', scope.gif.images['480w_still'].url);
         element.addClass('hovered');
       });
       element.on('mouseleave', function () {
-        attrs.$set('ngSrc', scope.gif.images['480w_still'].url);
+        attrs.$set('ngSrc', scope.gif.images.fixed_width.url);
         element.removeClass('hovered');
       });
     }
