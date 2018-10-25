@@ -28,27 +28,9 @@
       <input class="form__input navbar__search" type="text" placeholder="Search Gify" ng-model="searchStr" />
     </nav>
 
-    <div class="wrapper">
-      <img src="https://media1.giphy.com/media/ttQ5Jj9Lhn03e/200w.gif">
-      <img src="https://media1.giphy.com/media/HQ2Slp9yEkX72/200w.gif">
-      <img src="https://media3.giphy.com/media/pjhdUQMV4ZRumCd1nH/200w.gif">
-      <img src="https://media3.giphy.com/media/Q2ZCQyZfjn7Bm/200w.gif">
-      <img src="https://media1.giphy.com/media/WtCHRSPCuqS8E/200w.gif">
-      <img src="https://media0.giphy.com/media/QT4ffthFiGohi/200w.gif">
-      <img src="https://media1.giphy.com/media/x1ZuiSbirFhEA/200w.gif">
-      <img src="https://media0.giphy.com/media/ttQ5Jj9Lhn03e/200w.gif">
-      <img src="https://media0.giphy.com/media/7cjv3It9UKAWQ/200w.gif">
-      <img src="https://media0.giphy.com/media/b8q8jYO8xKWoE/200w.gif">
-      <img src="https://media1.giphy.com/media/ttQ5Jj9Lhn03e/200w.gif">
-      <img src="https://media1.giphy.com/media/HQ2Slp9yEkX72/200w.gif">
-      <img src="https://media3.giphy.com/media/pjhdUQMV4ZRumCd1nH/200w.gif">
-      <img src="https://media3.giphy.com/media/Q2ZCQyZfjn7Bm/200w.gif">
-      <img src="https://media1.giphy.com/media/WtCHRSPCuqS8E/200w.gif">
-      <img src="https://media0.giphy.com/media/QT4ffthFiGohi/200w.gif">
-      <img src="https://media1.giphy.com/media/x1ZuiSbirFhEA/200w.gif">
-      <img src="https://media0.giphy.com/media/ttQ5Jj9Lhn03e/200w.gif">
-      <img src="https://media0.giphy.com/media/7cjv3It9UKAWQ/200w.gif">
-      <img src="https://media0.giphy.com/media/b8q8jYO8xKWoE/200w.gif">
+    <div ng-if="gifs.length <= 0">No Gifs Found!</div>
+    <div class="wrapper" ng-if="gifs.length > 0">
+      <img ng-src="{{ gif.images['480w_still'].url }}" ng-repeat="gif in gifs" gif="gif">
     </div>
   </div>
 </div>
