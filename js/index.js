@@ -36,9 +36,18 @@ gifyApp.service('Auth', function () {
 gifyApp.service('gify', ['$http', function ($http) {
 
   this.search = function (req) {
+
+    let end_point = 'https://api.giphy.com/v1/gifs/search?api_key=F4H0W1vLeAa94BX196mYLu8USqgnz0zy&limit=20';
+
+    if (req.hasOwnProperty('query'))
+      end_point += '&q=' + req.query;
+
+    if (req.hasOwnProperty('offset'))
+      end_point += '&offset=' + req.offset;
+
     return $http({
       method: 'GET',
-      url: 'https://api.giphy.com/v1/gifs/search?api_key=F4H0W1vLeAa94BX196mYLu8USqgnz0zy&q=cheeseburgers&limit=4&offset=' + req.offset,
+      url: end_point,
       headers: {
         'Content-Type': 'application/json'
       }
@@ -54,7 +63,6 @@ gifyApp.directive('gif', function () {
       gif: "="
     },
     link: function (scope, element, attrs) {
-      console.log(element);
       element.on('mouseenter', function () {
         attrs.$set('ngSrc', scope.gif.images.fixed_width.url);
         element.addClass('hovered');

@@ -10,18 +10,34 @@ gifyApp.controller('dashboardCtrl', ['$scope', 'gify', '$timeout', function ($sc
   let offset = 0;
 
   function fetchGifs() {
-    gify.search({
-      offset: offset
-    }).then(
+
+    let req = {
+      offset: offset,
+      query: 'chees'
+    };
+
+    gify.search(req).then(
       function (res) {
-        $scope.gifs = $scope.gifs.concat(res.data.data);
-        offset = res.data.pagination.offset + res.data.pagination.count;
+        if (res.status == 200) {
+          if (offset > 0)
+            $scope.gifs = $scope.gifs.concat(res.data.data);
+          else
+            $scope.gifs = res.data.data;
+          offset = res.data.pagination.offset + res.data.pagination.count;
+        } else {
+          console.log("Error Occured!");
+        }
       },
       function (err) {
         console.log(err);
       }
     );
   }
+
+  $scope.search_gifs = function(s) {
+    console.log(s);
+  }
+
   fetchGifs();
-  $timeout(fetchGifs, 3000);
+
 }]);

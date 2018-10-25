@@ -25,7 +25,10 @@
       <span class="toggle" ng-click="toggled = !toggled">
         <i class="fas fa-bars"></i>
       </span>
-      <input class="form__input navbar__search" type="text" placeholder="Search Gify" ng-model="searchStr" />
+      <div class="search__container">
+        <input class="form__input" type="text" placeholder="Search Gify" ng-model="s" />
+        <button class="search__btn"><i class="fas fa-search" ng-click="search_gifs(s)"></i></button>
+      </div>
     </nav>
 
     <div ng-if="gifs.length <= 0">No Gifs Found!</div>
