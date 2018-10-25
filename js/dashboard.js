@@ -1,10 +1,6 @@
 var gifyApp = angular.module('gifyApp');
 
-gifyApp.controller('dashboardCtrl', ['$scope', 'gify', '$timeout', function ($scope, gify, $timeout) {
-
-  $scope.logout = () => {
-    $location.path('/');
-  }
+gifyApp.controller('dashboardCtrl', ['$scope', 'gify', '$timeout', '$location', function ($scope, gify, $timeout, $location) {
 
   $scope.gifs = [];
   let offset = 0;
@@ -13,7 +9,7 @@ gifyApp.controller('dashboardCtrl', ['$scope', 'gify', '$timeout', function ($sc
 
     let req = {
       offset: offset,
-      query: 'chees'
+      query: $scope.search_gif
     };
 
     gify.search(req).then(
@@ -34,10 +30,29 @@ gifyApp.controller('dashboardCtrl', ['$scope', 'gify', '$timeout', function ($sc
     );
   }
 
-  $scope.search_gifs = function(s) {
-    console.log(s);
+  $scope.search_gifs = function (s) {
+    if (s) {
+      s = s.toLowerCase();
+      var reg = /^[A-Za-z\d\s]+$/;
+      if (reg.test(s)) {
+        $location.search('q', s);
+      } else {
+        $location.url($location.path());
+      }
+    } else {
+      $location.url($location.path());
+    }
+  }
+
+  let queryStr = $location.search().q;
+  if (queryStr) {
+    $scope.search_gif = queryStr;
   }
 
   fetchGifs();
+
+  $scope.logout = () => {
+    $location.path('/');
+  }
 
 }]);
