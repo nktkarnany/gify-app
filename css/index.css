@@ -328,5 +328,23 @@ body {
   }
 }
 
+.load-more {
+  padding: 10px;
+  min-height: 50px;
+  text-align: center;
+}
+
+.load-more > .load-btn {
+  background-color: rgba(101, 162, 79, 1);
+  color: #fff;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: .25rem;
+  border: none;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
+}
+
 
 /* Dashboard Page Css Ends */

@@ -31,9 +31,13 @@
       </div>
     </nav>
 
-    <div ng-if="gifs.length <= 0">No Gifs Found!</div>
+    <div ng-if="loading">Loading...</div>
+    <div ng-if="gifs.length <= 0 && !loading">No Gifs Found!</div>
     <div class="wrapper" ng-if="gifs.length > 0">
       <img ng-src="{{ gif.images['480w_still'].url }}" ng-repeat="gif in gifs" gif="gif">
+    </div>
+    <div class="load-more" ng-if="!loading">
+      <button type="button" class="load-btn" ng-click="load_more()">Load More</button>
     </div>
   </div>
 </div>

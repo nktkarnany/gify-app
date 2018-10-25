@@ -4,6 +4,7 @@ gifyApp.controller('dashboardCtrl', ['$scope', 'gify', '$timeout', '$location', 
 
   $scope.gifs = [];
   let offset = 0;
+  $scope.loading = false;
 
   function fetchGifs() {
 
@@ -11,6 +12,8 @@ gifyApp.controller('dashboardCtrl', ['$scope', 'gify', '$timeout', '$location', 
       offset: offset,
       query: $scope.search_gif
     };
+
+    $scope.loading = true;
 
     gify.search(req).then(
       function (res) {
@@ -23,9 +26,11 @@ gifyApp.controller('dashboardCtrl', ['$scope', 'gify', '$timeout', '$location', 
         } else {
           console.log("Error Occured!");
         }
+        $scope.loading = false;
       },
       function (err) {
         console.log(err);
+        $scope.loading = false;
       }
     );
   }
@@ -47,6 +52,10 @@ gifyApp.controller('dashboardCtrl', ['$scope', 'gify', '$timeout', '$location', 
   let queryStr = $location.search().q;
   if (queryStr) {
     $scope.search_gif = queryStr;
+  }
+
+  $scope.load_more = function() {
+    fetchGifs();
   }
 
   fetchGifs();
